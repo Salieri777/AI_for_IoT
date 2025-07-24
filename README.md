@@ -5,7 +5,7 @@ This is a teaching course material. It introduces a simple example of sound wave
 
 ## How to Use
 
-    git clone https://github.com/FinchMF/SER-ESC-50.git
+    git clone https://github.com/Salieri777/AI_for_IoT.git
 
     pip install -r requirements.txt
 
