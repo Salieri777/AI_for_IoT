@@ -1,4 +1,3 @@
-
 import torch
 import data
 import model as m
@@ -38,9 +37,7 @@ def train_CNN(train_loader, valid_loader):
     else:
         device=torch.device('cpu')
 
-    model = m.ESC50Model(input_shape=(1, 128, 431),
-                            batch_size=16, 
-                            num_cat=50).to(device)
+    model = m.ESC50Model(num_cat=50).to(device)
 
     trained_model = utils.train(model,train_loader, valid_loader)
     utils.save_model(trained_model, 'models/CNN_Classifier.pth')
@@ -58,15 +55,10 @@ def train_resNet(train_loader, valid_loader):
 
     model = m.RES().gen_resnet()
 
-    trained_model = utils.train(model, train_loader, valid_loader,
-                         epochs=50,
-                         learning_rate=2e-4
-                         )
+    trained_model = utils.train(model, train_loader, valid_loader, epochs=50, learning_rate=2e-4, decay=True)
     utils.save_model(trained_model, 'models/resNet.pth')
 
     return trained_model
-
-
 
                     
 if __name__ == '__main__':
@@ -78,9 +70,6 @@ if __name__ == '__main__':
     train_loader, valid_loader = prepare_data()
     CNN_model = train_CNN(train_loader, valid_loader)
     resNet_model = train_resNet(train_loader, valid_loader)
-
-
-    
 
 
 
