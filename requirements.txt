@@ -1,0 +1,11 @@
+
+aiohttp
+gunicorn
+librosa
+numpy
+pandas
+starlette
+torch
+torchvision
+uvicorn
+
